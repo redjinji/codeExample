@@ -1,0 +1,15 @@
+.user_item {
+  padding: 1rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+
+  &:hover {
+    font-weight: bold;
+    background-color: lightyellow;
+  }
+}
+
+.user_image {
+  width: 2rem;
+  margin-right: .3rem;
+}

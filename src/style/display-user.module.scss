@@ -1,0 +1,15 @@
+//use global so animation name won't compile
+.fetching :global{
+  font-size: 2rem;
+  padding: 1rem;
+  animation: fetch 2s infinite;
+  text-align: center;
+}
+
+.fetching_fail {
+  @extend .fetching;
+  background-color: red;
+  animation: none;
+  font-weight: bold;
+  color: white;
+}
