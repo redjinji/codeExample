@@ -8,18 +8,20 @@ export default function DisplayUsers() {
 	let [fetchingUsers, setFetchingUsers] = useState('fetching');
 	
 	useEffect(() => {
-		Promise.resolve(apiCall.fetchUsers())
-		.then(data => {
-			setTimeout(() => {
-				setFetchingUsers('success');
-				setUsers(data.data);
-			}, 2000);
-		})
-		.catch(e => {
-			console.error(e);
-			setTimeout(() => setFetchingUsers('fail'), 2000);
-		});
+		apiCall.fetchUsers().then(fetchSuccess).catch(fetchFail);
 	}, []);
+	
+	function fetchSuccess(data) {
+		setTimeout(() => {
+			setFetchingUsers('success');
+			setUsers(data.data);
+		}, 2000);
+	}
+	
+	function fetchFail(error) {
+		console.error(error);
+		setTimeout(() => setFetchingUsers('fail'), 2000);
+	}
 	
 	return (
 		<div className={'users__container'}>

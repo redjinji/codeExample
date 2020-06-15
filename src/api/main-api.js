@@ -16,11 +16,11 @@ function apiCall() {
 	}
 	
 	function fetchUsers() {
-		return Promise.resolve(mainFetch('user'));
+		return mainFetch('user');
 	}
 	
 	function fetchUser(id) {
-		return Promise.resolve(mainFetch(`user/${id}`));
+		return mainFetch(`user/${id}`);
 	}
 	
 	return {
