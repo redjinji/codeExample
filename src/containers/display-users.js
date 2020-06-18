@@ -11,14 +11,16 @@ export default function DisplayUsers() {
 		apiCall.fetchUsers().then(fetchSuccess).catch(fetchFail);
 	}, []);
 	
-	function fetchSuccess(data) {
+	function fetchSuccess(users) {
 		setTimeout(() => {
 			setFetchingUsers('success');
-			setUsers(data.data);
+			console.log('users from fetch',users)
+			setUsers(users.results);
 		}, 2000);
 	}
 	
 	function fetchFail(error) {
+		console.log('fetch failed')
 		console.error(error);
 		setTimeout(() => setFetchingUsers('fail'), 2000);
 	}

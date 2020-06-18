@@ -1,37 +1,20 @@
-import {act} from "react-dom/test-utils";
-import {render, unmountComponentAtNode} from "react-dom";
 import DisplayUsers from "./display-users";
 import React from "react";
-import {configure} from "enzyme/build";
+import {configure, shallow} from "enzyme/build";
 import Adapter from "enzyme-adapter-react-16/build";
 
 configure({adapter: new Adapter()});
 
-let container = null;
+let wrapper = null;
 beforeEach(() => {
-	container = document.createElement("div");
-	document.body.appendChild(container);
-});
-
-afterEach(() => {
-	unmountComponentAtNode(container);
-	container.remove();
-	container = null;
+	wrapper = shallow(<DisplayUsers/>);
 });
 
 it('fetch waiting', () => {
-	act(() => {
-		render(<DisplayUsers/>, container);
-	});
-	
-	let fetchingContainer = container.querySelector('.fetching');
-	expect(fetchingContainer.innerHTML).toBe('Fetching Users');
+	expect(wrapper.text()).toBe('Fetching Users');
 });
 
 it('fetch success state', ()=>{
-	console.log(container);
-	const containerInstance = container.find('.users__container');
-	console.log(containerInstance);
-	
-	// containerInstance.fetchSuccess({data:{data:[]}});
+	const containerInstance = wrapper.find('.users__container');
+	expect(containerInstance.text()).toBe('Fetching Users');
 });
