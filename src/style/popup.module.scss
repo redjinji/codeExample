@@ -1,0 +1,20 @@
+@import "variables";
+
+.popup{
+  &__bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(var(--black),.7);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  background-color: var(--white);
+  width: 50%;
+  min-width: 33rem;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import style from '../style/user-item.module.scss';
 
-export default function UserItem({user, clicked, id}) {
+export default function UserItem({user, clicked=()=>{}}) {
 	const fullUserName = `${user.name.title} ${user.name.first} ${user.name.last}`;
 	return (
 		<li

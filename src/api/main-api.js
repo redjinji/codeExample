@@ -9,10 +9,12 @@ function apiCall() {
 			return response.ok ? json : Promise.reject(response);
 		});
 	}
-	
-	function mainFetch(data) {
+	// useEffect((dataToFetch = 'picture,name,id,email,dob')  => {
+	// 	mainFetch(dataToFetch);
+	// },[])
+	function mainFetch(dataToFetch='picture,name,id,email,dob') {
 		return new Promise((resolve, reject) => {
-			fetch(`https://randomuser.me/api/?results=10&nat=us&inc=picture,name,gender,id&noinfo&${data}`)
+			fetch(`https://randomuser.me/api/?results=10&nat=us&inc=${dataToFetch}&noinfo&`)
 			.then(handleResponse)
 			.then(resolve)
 			.catch(()=>{
@@ -26,7 +28,7 @@ function apiCall() {
 	}
 	
 	function fetchUsers() {
-		return mainFetch('user');
+		return mainFetch();
 	}
 	
 	function fetchUser(id) {
